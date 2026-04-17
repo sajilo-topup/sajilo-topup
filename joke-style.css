@@ -1,0 +1,30 @@
+.joke-container {
+    background: linear-gradient(135deg, #f06, #834);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    animation: fadeIn 1s;
+}
+
+button {
+    background-color: #fff;
+    color: #f06;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
