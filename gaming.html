@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sajilo Top Up Center Nepal</title>
+  <link rel="stylesheet" href="gaming.css" />
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="#">
+        <span>Sajilo</span>Top Up
+      </a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#topup">Top-Up</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <a class="btn btn-secondary" href="#login">Login</a>
+        <a class="btn btn-primary" href="#register">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>Sajilo Top Up Center Nepal</h1>
+          <p>
+            Instant top-up for your favorite games. Mobile Legends, Free Fire, Lord Mobile, and more.
+            Safe, fast, and reliable gaming credits delivery.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#games">Browse Games</a>
+            <a class="btn btn-secondary" href="#topup">Top-Up Now</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-visual">
+            <div class="sajilo-logo">
+              <h2>Sajilo</h2>
+              <p>Top Up Center</p>
+              <p>Nepal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="games">
+      <h2>Popular Games</h2>
+      <p>Choose your game and get instant top-up credits.</p>
+      <div class="games-grid">
+        <div class="game-card">
+          <img src="https://gaming.com.np/assets/uploads/products/mobile-legends-diamonds.jpg" alt="Mobile Legends" />
+          <h3>Mobile Legends</h3>
+          <p>Diamonds & Battle Pass</p>
+          <a class="btn btn-primary" href="#topup">Top-Up</a>
+        </div>
+        <div class="game-card">
+          <img src="https://gaming.com.np/assets/uploads/products/free-fire-topup-nepal.jpg" alt="Free Fire" />
+          <h3>Free Fire</h3>
+          <p>Diamonds & Bundles</p>
+          <a class="btn btn-primary" href="#topup">Top-Up</a>
+        </div>
+        <div class="game-card">
+          <img src="https://gaming.com.np/assets/uploads/products/lord-mobile.jpg" alt="Lord Mobile" />
+          <h3>Lord Mobile</h3>
+          <p>Gems & Packages</p>
+          <a class="btn btn-primary" href="#topup">Top-Up</a>
+        </div>
+        <div class="game-card">
+          <img src="https://gaming.com.np/assets/uploads/products/pubg-mobile-global.jpg" alt="PUBG Mobile" />
+          <h3>PUBG Mobile</h3>
+          <p>UC & Royale Pass</p>
+          <a class="btn btn-primary" href="#topup">Top-Up</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="topup">
+      <h2>Top-Up Options</h2>
+      <p>Select your game and amount to proceed with payment. All payment methods are available right here on this page.</p>
+      <div class="topup-form">
+        <label>
+          Select Game
+          <select id="game-select" onchange="updatePlayerInfo()">
+            <option>Mobile Legends</option>
+            <option>Free Fire</option>
+            <option>Lord Mobile</option>
+            <option>PUBG Mobile</option>
+          </select>
+        </label>
+        <label>
+          Player ID
+          <input type="text" id="player-id" placeholder="Enter your Player ID" oninput="updatePlayerInfo()" />
+        </label>
+        <div class="player-info">
+          <p>Selected game: <strong id="selected-game-name">Mobile Legends</strong></p>
+        </div>
+        <label>
+          Amount
+          <select id="amount-select">
+            <option value="4">100 Diamonds - $4</option>
+            <option value="10">250 Diamonds - $10</option>
+            <option value="20">500 Diamonds - $20</option>
+            <option value="40">1000 Diamonds - $40</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" onclick="showPayment()">Proceed to Payment</button>
+      </div>
+
+      <div id="payment-section" class="payment-section" style="display: none;">
+        <h3>Choose Payment Method</h3>
+        <p class="payment-note">Use any of the three payment methods below directly from this page.</p>
+        <div class="payment-methods">
+          <button class="payment-btn active" onclick="selectPayment('esewa', event)">eSewa</button>
+          <button class="payment-btn" onclick="selectPayment('paypal', event)">PayPal</button>
+          <button class="payment-btn" onclick="selectPayment('card', event)">Credit/Debit Card</button>
+        </div>
+
+        <div id="esewa-payment" class="payment-option">
+          <h4>Pay with eSewa</h4>
+          <p>Scan the QR code below to complete your payment.</p>
+          <div class="qr-code">
+            <img id="esewa-qr" src="https://via.placeholder.com/200x200?text=Your+eSewa+QR+Code" alt="eSewa QR Code" />
+            <p>Amount: $<span id="payment-amount">0</span></p>
+            <p>Game: <span id="payment-game">None</span></p>
+            <p>Player ID: <span id="payment-id">None</span></p>
+          </div>
+          <div class="payment-instructions">
+            <h4>Payment Instructions:</h4>
+            <ol>
+              <li>Scan the QR code with your eSewa app</li>
+              <li>Enter the exact amount shown above</li>
+              <li>Complete the payment</li>
+              <li>Take a screenshot of the payment confirmation</li>
+              <li>Send the screenshot to 9749249644 (Rojan Dahal) via WhatsApp</li>
+              <li>Your top-up will be processed instantly</li>
+            </ol>
+          </div>
+          <a class="btn btn-secondary" href="https://wa.me/9779749249644">Send Screenshot to WhatsApp</a>
+        </div>
+
+        <div id="paypal-payment" class="payment-option" style="display: none;">
+          <h4>Pay with PayPal</h4>
+          <p>Use PayPal email: <strong>dahalrojan3@gmail.com</strong> or PayPal ID: <strong>9749249644</strong>.</p>
+          <div class="paypal-section">
+            <p>Amount: $<span id="paypal-amount">0</span></p>
+            <p>Game: <span id="paypal-game">None</span></p>
+            <p>Player ID: <span id="paypal-id">None</span></p>
+          </div>
+          <p>Please open the PayPal app and send payment to the above email or ID.</p>
+          <p>After payment, send confirmation to WhatsApp for top-up.</p>
+          <a class="btn btn-secondary" href="https://wa.me/9779749249644">Send Confirmation to WhatsApp</a>
+        </div>
+
+        <div id="card-payment" class="payment-option" style="display: none;">
+          <h4>Pay with Credit/Debit Card</h4>
+          <p>Enter your card details below for secure payment. We accept Visa, MasterCard, and debit cards.</p>
+          <form class="card-form" onsubmit="cardPayment(event)">
+            <label>
+              Card Number
+              <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" />
+            </label>
+            <div class="card-row">
+              <label>
+                Expiry Date
+                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" />
+              </label>
+              <label>
+                CVV
+                <input type="text" id="card-cvv" placeholder="123" maxlength="3" />
+              </label>
+            </div>
+            <label>
+              Cardholder Name
+              <input type="text" id="card-name" placeholder="John Doe" />
+            </label>
+            <p>Amount: $<span id="card-amount">0</span> | Game: <span id="card-game">None</span> | Player ID: <span id="card-id">None</span></p>
+            <button type="submit" class="btn btn-primary">Pay Now</button>
+          </form>
+          <p>Enter your card details and then send confirmation to WhatsApp for top-up.</p>
+          <a class="btn btn-secondary" href="https://wa.me/9779749249644">Send Confirmation to WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="contact">
+      <h2>Contact Us</h2>
+      <p>Get in touch for support or inquiries.</p>
+      <div class="contact-info">
+        <p>📞 Chat Below Before Calling: 9749249644 (Rojan Dahal)</p>
+        <p>📧 contact@sajilotopup.com.np</p>
+        <p>📍 Kanchanpur, Nepal</p>
+        <div class="social-links">
+          <a href="https://wa.me/9779749249644">WhatsApp</a>
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#games">Games</a>
+          <a href="#topup">Top-Up</a>
+          <a href="index.html">School Management</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h4>Useful Links</h4>
+          <a href="#">FAQ</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Refund Policy</a>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>📞 9749249644 (Rojan Dahal)</p>
+          <p>📧 contact@sajilotopup.com.np</p>
+          <p>📍 Kanchanpur, Nepal</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sajilo Top Up Center Nepal. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showPayment() {
+      const game = document.getElementById('game-select').value;
+      const amount = document.getElementById('amount-select').value;
+      const playerId = document.getElementById('player-id').value;
+
+      if (!playerId) {
+        alert('Please enter your Player ID');
+        return;
+      }
+
+      // Update all payment sections
+      ['payment', 'paypal', 'card'].forEach(prefix => {
+        document.getElementById(`${prefix}-game`).textContent = game;
+        document.getElementById(`${prefix}-amount`).textContent = amount;
+        document.getElementById(`${prefix}-id`).textContent = playerId;
+      });
+
+      updatePaymentLinks(game, amount, playerId);
+      updatePlayerInfo();
+      document.getElementById('payment-section').style.display = 'block';
+      selectPayment('esewa'); // Default to eSewa
+    }
+
+    function selectPayment(method, event) {
+      // Hide all payment options
+      document.querySelectorAll('.payment-option').forEach(el => el.style.display = 'none');
+      // Remove active class from all buttons
+      document.querySelectorAll('.payment-btn').forEach(btn => btn.classList.remove('active'));
+      // Show selected payment option
+      document.getElementById(`${method}-payment`).style.display = 'block';
+      // Add active class to selected button
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
+    }
+
+    function updatePaymentLinks(game, amount, playerId) {
+      const paypalLink = document.getElementById('paypal-link');
+      if (paypalLink) {
+        const itemName = encodeURIComponent(`Sajilo Top Up - ${game}`);
+        paypalLink.href = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=dahalrojan3@gmail.com&item_name=${itemName}&amount=${amount}&currency_code=USD`;
+      }
+    }
+
+    function updatePlayerInfo() {
+      const game = document.getElementById('game-select').value;
+      const playerId = document.getElementById('player-id').value.trim();
+      const selectedGameName = document.getElementById('selected-game-name');
+      if (selectedGameName) {
+        selectedGameName.textContent = game;
+      }
+      const displayText = playerId ? `Game: ${game} | Player ID: ${playerId}` : `Selected game: ${game}`;
+      const playerInfo = document.querySelector('.player-info p');
+      if (playerInfo) {
+        playerInfo.textContent = displayText;
+      }
+    }
+
+    function cardPayment(event) {
+      event.preventDefault();
+      alert('Card payment is not processed directly on this page yet. Please complete payment via WhatsApp or contact us for secure card processing.');
+    }
+
+    // Card number formatting
+    document.addEventListener('DOMContentLoaded', function() {
+      const cardInput = document.querySelector('input[placeholder="1234 5678 9012 3456"]');
+      if (cardInput) {
+        cardInput.addEventListener('input', function(e) {
+          let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+          let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+          e.target.value = formattedValue;
+        });
+      }
+
+      const expiryInput = document.querySelector('input[placeholder="MM/YY"]');
+      if (expiryInput) {
+        expiryInput.addEventListener('input', function(e) {
+          let value = e.target.value.replace(/\D/g, '');
+          if (value.length >= 2) {
+            value = value.slice(0, 2) + '/' + value.slice(2, 4);
+          }
+          e.target.value = value;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
